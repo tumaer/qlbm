@@ -24,5 +24,3 @@ url = {https://www.sciencedirect.com/science/article/pii/S0010465524002960},
 author = {David Wawrzyniak and Josef Winter and Steffen Schmidt and Thomas Indinger and Christian F. Janßen and Uwe Schramm and Nikolaus A. Adams},
 }
 ```
-
-## License
