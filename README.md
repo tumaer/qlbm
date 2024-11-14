@@ -2,7 +2,7 @@
 Accompanying code for publication "A quantum algorithm for the lattice-Boltzmann method advection-diffusion equation"
 https://www.sciencedirect.com/science/article/pii/S0010465524002960
  
-## Corresponding Author:
+## Corresponding Author
 David Wawrzyniak
 
 Correspondence via 
