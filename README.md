@@ -7,6 +7,7 @@ We present a versatile and efficient quantum algorithm based on the Lattice Bolt
 
 ## Corresponding Author
 David Wawrzyniak
+
 Correspondence via 
 [mail](mailto:david.wawrzyniak@tum.de).
 
