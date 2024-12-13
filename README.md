@@ -7,7 +7,7 @@ We present a versatile and efficient quantum algorithm based on the Lattice Bolt
 ## Installation 
 Create an environment with python version 3.8.15
 ```
-conda create -n 'env_name' python=3.8.15
+conda create -n 'env_name' python=3.11
 ```
 Activate environment
 ```
