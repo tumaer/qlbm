@@ -1,6 +1,6 @@
 import numpy as np
 import qiskit
-from qiskit.circuit.library import HGate, XGate
+from qiskit.circuit.library import HGate, XGate, DiagonalGate
 from qiskit import QuantumRegister, QuantumCircuit
 
 def InitializeQC(density_field: np.ndarray, num_velocities: int) -> QuantumCircuit:
@@ -162,10 +162,11 @@ def collision(
         U_1 = f + 1j * np.sqrt(1 - np.square(f))
         U_2 = f - 1j * np.sqrt(1 - np.square(f))
         Collision_diagonal_entries = np.concatenate((U_1, np.ones(velocity_field.size), U_2, np.ones(velocity_field.size))).tolist()
+        diagonal_gate = DiagonalGate(Collision_diagonal_entries)
         
         # Apply the collision operation
         qc.h(qc.qregs[-1])  # Apply Hadamard to ancilla qubit
-        qc.diagonal(Collision_diagonal_entries, qc.qubits)
+        qc.append(diagonal_gate, qc.qubits)
         qc.h(qc.qregs[-1])
 
     # D2Q5 collision model
@@ -185,10 +186,11 @@ def collision(
         U_1 = f + 1j * np.sqrt(1 - np.square(f))
         U_2 = f - 1j * np.sqrt(1 - np.square(f))
         Collision_diagonal_entries = np.concatenate([U_1, np.ones(2 ** (len(qc.qregs[0]) + len(qc.qregs[1])) * 3), U_2, np.ones(2 ** (len(qc.qregs[0]) + len(qc.qregs[1])) * 3)]).tolist()
+        diagonal_gate = DiagonalGate(Collision_diagonal_entries)
         
         # Apply the collision operation
         qc.h(qc.qregs[-1])
-        qc.diagonal(Collision_diagonal_entries, qc.qubits)
+        qc.append(diagonal_gate, qc.qubits)
         qc.h(qc.qregs[-1])
 
     # D2Q9 collision model
@@ -208,10 +210,11 @@ def collision(
         U_1 = f + 1j * np.sqrt(1 - np.square(f))
         U_2 = f - 1j * np.sqrt(1 - np.square(f))
         Collision_diagonal_entries = np.concatenate((U_1, np.ones(2 ** (len(qc.qregs[0]) + len(qc.qregs[1])) * 7), U_2, np.ones(2 ** (len(qc.qregs[0]) + len(qc.qregs[1])) * 7))).tolist()
+        diagonal_gate = DiagonalGate(Collision_diagonal_entries)
         
         # Apply the collision operation
         qc.h(qc.qregs[-1])
-        qc.diagonal(Collision_diagonal_entries, qc.qubits)
+        qc.append(diagonal_gate, qc.qubits)
         qc.h(qc.qregs[-1])
 
     # D3Q27 collision model
@@ -239,10 +242,11 @@ def collision(
         U_1 = f + 1j * np.sqrt(1 - np.square(f))
         U_2 = f - 1j * np.sqrt(1 - np.square(f))
         Collision_diagonal_entries = np.concatenate((U_1, np.ones(2 ** (len(qc.qregs[0]) + len(qc.qregs[1]) + len(qc.qregs[2])) * 5), U_2, np.ones(2 ** (len(qc.qregs[0]) + len(qc.qregs[1]) + len(qc.qregs[2])) * 5))).tolist()
+        diagonal_gate = DiagonalGate(Collision_diagonal_entries)
         
         # Apply the collision operation
         qc.h(qc.qregs[-1])
-        qc.diagonal(Collision_diagonal_entries, qc.qubits)
+        qc.append(diagonal_gate, qc.qubits)
         qc.h(qc.qregs[-1])
     
     # Add a barrier for separation
@@ -319,7 +323,7 @@ def get_right_shift_gate(
     # Apply multi-controlled Toffoli gates for the right shift operation
     for target_qubit in reversed(qubits_to_shift):
         control_qubits = list(range(qubits_to_shift[0], target_qubit))
-        qc.mct(control_qubits + list(microscopic_control_qubits), target_qubit)
+        qc.mcx(control_qubits + list(microscopic_control_qubits), target_qubit)
 
 
 def get_left_shift_gate(
@@ -366,7 +370,7 @@ def get_left_shift_gate(
     # Apply multi-controlled Toffoli gates for the left shift operation
     for target_qubit in qubits_to_shift:
         control_qubits = list(range(qubits_to_shift[0], target_qubit))
-        qc.mct(list(microscopic_control_qubits) + control_qubits, target_qubit)
+        qc.mcx(list(microscopic_control_qubits) + control_qubits, target_qubit)
         
 
 def streaming(
