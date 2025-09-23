@@ -31,7 +31,7 @@ author = {David Wawrzyniak and Josef Winter and Steffen Schmidt and Thomas Indin
 ```
 
 
-## A Quantum Algorithm for the Advection-Diffusion Equation in the Lattice-Boltzmann Method (2025)
+## A Quantum Algorithm for the Advection-Diffusion Equation in the Lattice-Boltzmann Method (2024)
 Supplementary code for the publication: "A Quantum Algorithm for the Advection-Diffusion Equation in the Lattice-Boltzmann Method". https://doi.org/10.1016/j.cpc.2024.109373
 
 ## Abstract
