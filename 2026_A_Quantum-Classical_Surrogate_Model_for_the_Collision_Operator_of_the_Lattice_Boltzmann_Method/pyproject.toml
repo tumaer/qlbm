@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hqlbm"
+version = "1.0.0"
+description = "Hybrid quantum-classical lattice Boltzmann method with a variational quantum BGK collision operator"
+readme = "README.md"
+requires-python = ">=3.14"
+authors = [{ name = "Lukas Birk" }]
+classifiers = ["License :: OSI Approved :: GNU General Public License v3 (GPLv3)"]
+dependencies = [
+    "torch>=2.14",
+    "numpy>=2.5",
+    "pennylane>=0.45.1",
+]
+
+[project.urls]
+Publication = "https://doi.org/10.1016/j.cpc.2026.110513"
+
+[project.optional-dependencies]
+test = ["pytest>=9.2"]
+
+[tool.setuptools]
+package-dir = { "hqlbm" = "src" }      # the modules in src/ form the package hqlbm
+packages = ["hqlbm"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["slow: long regression checks, run with pytest -m slow"]
+addopts = "-m \"not slow\""

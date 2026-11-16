@@ -1,5 +1,33 @@
 # Quantum Lattice-Boltzmann Method
 
+## A Quantum-Classical Surrogate Model for the Collision Operator of the Lattice Boltzmann Method (2026)
+Supplementary code for the publication: "A Quantum-Classical Surrogate Model for the Collision Operator of the Lattice Boltzmann Method". https://doi.org/10.1016/j.cpc.2026.110513
+
+## Abstract
+We introduce a hybrid approach utilising a quantum machine learning surrogate model to approximate the non-linear collision dynamics of the LBM. It offloads the non-unitary operations that challenge pure quantum solvers. The surrogate's expressivity relies on variational quantum circuits that implement partial Fourier series, while data re-uploading extends the representable frequency spectrum. Unlike previous approaches that use a fixed relaxation parameter, the relaxation step is embedded analytically in the circuit, allowing the learned equilibrium to be used for any relaxation parameter without retraining. We reassess standard VQC metrics, including expressibility, entanglement, and effective dimension, by relating them directly to task-specific surrogate performance and identifying the architectural parameters that determine approximation accuracy. The proposed surrogate is validated against the classical BGK collision operator using benchmark problems, including the Taylor-Green vortex for energy dissipation and the double shear layer for shear-driven instabilities and nonlinear flow evolution. Our results show that the surrogate closely reproduces the BGK reference on both benchmarks, using a single set of trained circuits across all relaxation parameters. These findings suggest that hybrid quantum-classical strategies offer a practical path toward realising the potential of quantum computing in fluid engineering.
+
+## Corresponding Author
+Lukas Birk
+
+Correspondence via 
+[mail](mailto:lukas.birk@tum.de).
+
+## Citation
+```
+@article{BIRK2026110513,
+title = {A Quantum-Classical Surrogate Model for the Collision Operator of the Lattice Boltzmann Method},
+journal = {Computer Physics Communications},
+pages = {110513},
+year = {2026},
+issn = {0010-4655},
+doi = {https://doi.org/10.1016/j.cpc.2026.110513},
+url = {https://www.sciencedirect.com/science/article/pii/S0010465526004947},
+author = {Lukas C. Birk and David M. Wawrzyniak and Josef M. Winter and Steffen J. Schmidt and Thomas Indinger and Christian F. Janßen and Nikolaus A. Adams}
+}
+```
+
+
+
 ## Linearized quantum lattice-Boltzmann method for the advection-diffusion equation using dynamic circuits (2025)
 Supplementary code for the publication: "Linearized quantum lattice-Boltzmann method for the advection-diffusion equation using dynamic circuits". https://doi.org/10.1016/j.cpc.2025.109856
 
